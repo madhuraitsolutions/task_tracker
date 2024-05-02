@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const EditTask = () => {
+export const EditTask = (task, taskList, setTaskList) => {
     const [editModel, setEditModel] = React.useState(false)
     const [projectName, setProjectName] = React.useState('')
     const [taskDescription, setTaskDescription] = React.useState('')
