@@ -1,12 +1,16 @@
 import React from 'react'
 
-const AddTask = () => {
+const AddTask = ({taskList, setTaskList}) => {
     const [addModel, setAddModel] = React.useState(false)
     const [projectName, setProjectName] = React.useState('')
     const [taskDescription, setTaskDescription] = React.useState('')
 
-    const handleAddTask = () => {
+    const handleAddTask = (e) => {
+        e.preventDefault()
+        setTaskList([...taskList, {projectName, taskDescription}])
         setAddModel(false)
+        setProjectName('')
+        setTaskDescription('')
     }
 
     const handleInputChange = (e) => {
