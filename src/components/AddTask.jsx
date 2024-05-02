@@ -3,7 +3,7 @@ import React from 'react'
 const AddTask = () => {
     const [addModel, setAddModel] = React.useState(false)
     const [projctName, setProjctName] = React.useState('')
-    const [projectDescription, setProjectDescription] = React.useState('')
+    const [taskDescription, setTaskDescription] = React.useState('')
 
     const handleAddTask = () => {
         setAddModel(false)
@@ -41,7 +41,10 @@ const AddTask = () => {
                                 <input
                                     className='w-full rounded-lg border px-5 py-2'
                                     id='project-name'
+                                    name='projectName'
                                     type="text"
+                                    value={projctName}
+                                    onChange={handleInputChange}
                                     placeholder='Project Name'
                                     required
                                 />
@@ -53,6 +56,9 @@ const AddTask = () => {
                                 <textarea 
                                     id="task-description"
                                     rows="3"
+                                    name="taskDescription"
+                                    value={taskDescription}
+                                    onChange={handleInputChange}
                                     placeholder='Task Description'
                                     className='w-full rounded-lg border px-5 py-2'
                                 />
