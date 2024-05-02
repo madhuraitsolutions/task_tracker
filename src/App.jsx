@@ -15,6 +15,11 @@ function App() {
         <AddTask taskList={taskList} setTaskList={setTaskList}/>
         <p className='text-xl'>to add new task</p>
       </div>
+      {
+        taskList.map((task, index) => (
+          <p className='text-xl p-6' key={index}>{task.projectName} : {task.taskDescription}</p>
+        ))
+      }
     </>
   )
 }
