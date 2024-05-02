@@ -3,6 +3,7 @@ import './App.css'
 import AddTask from './components/AddTask'
 
 function App() {
+  const [taskList, setTaskList] = React.useState([])
 
   return (
     <>
@@ -11,7 +12,7 @@ function App() {
       </h1>
       <div className='flex flex-row items-center gap-4'>
         <p className='text-xl pl-6'>Click </p>
-        <AddTask />
+        <AddTask taskList={taskList} setTaskList={setTaskList}/>
         <p className='text-xl'>to add new task</p>
       </div>
     </>
