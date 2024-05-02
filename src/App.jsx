@@ -22,9 +22,7 @@ function App() {
         </h1>
         {
           taskList.map((task, index) => (
-            <>
-              <Todo key={index} task={task} taskList={taskList} setTaskList={setTaskList} />
-            </>
+            <Todo key={index} task={task} taskList={taskList} setTaskList={setTaskList} />
           ))
         }
       </div>
