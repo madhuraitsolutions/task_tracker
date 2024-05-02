@@ -2,6 +2,8 @@ import React from 'react'
 
 const AddTask = () => {
     const [addModel, setAddModel] = React.useState(false)
+    const [projctName, setProjctName] = React.useState('')
+    const [projectDescription, setProjectDescription] = React.useState('')
 
     const handleAddTask = () => {
         setAddModel(false)
