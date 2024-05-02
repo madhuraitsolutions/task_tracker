@@ -1,6 +1,7 @@
 import React from 'react'
 import './App.css'
 import AddTask from './components/AddTask'
+import Todo from './components/Todo'
 
 function App() {
   const [taskList, setTaskList] = React.useState([])
@@ -17,7 +18,7 @@ function App() {
       </div>
       {
         taskList.map((task, index) => (
-          <p className='text-xl p-6' key={index}>{task.projectName} : {task.taskDescription}</p>
+          <Todo key={index} task={task} />
         ))
       }
     </>
