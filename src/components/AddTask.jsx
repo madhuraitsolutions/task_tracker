@@ -2,11 +2,19 @@ import React from 'react'
 
 const AddTask = () => {
     const [addModel, setAddModel] = React.useState(false)
-    const [projctName, setProjctName] = React.useState('')
+    const [projectName, setProjectName] = React.useState('')
     const [taskDescription, setTaskDescription] = React.useState('')
 
     const handleAddTask = () => {
         setAddModel(false)
+    }
+
+    const handleInputChange = (e) => {
+        // const name = e.target.name;
+        // const value = e.target.value;
+        const {name, value} = e.target;
+        if(name === 'projectName') setProjectName(value)
+        if(name === 'taskDescription') setTaskDescription(value)
     }
 
     return (
@@ -43,7 +51,7 @@ const AddTask = () => {
                                     id='project-name'
                                     name='projectName'
                                     type="text"
-                                    value={projctName}
+                                    value={projectName}
                                     onChange={handleInputChange}
                                     placeholder='Project Name'
                                     required
