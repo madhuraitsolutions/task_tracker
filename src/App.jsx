@@ -21,10 +21,8 @@ function App() {
           Todo List
         </h1>
         {
-          taskList.slice(0).reverse().map((task, index) => 
-          <>
-            <Todo key={new Date().getTime()} task={task} taskList={taskList} setTaskList={setTaskList} />
-          </>
+          taskList.map((task, index) => 
+            <Todo key={index} task={task} taskList={taskList} setTaskList={setTaskList} />
           )
         }
       </div>
