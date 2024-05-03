@@ -49,7 +49,7 @@ const Todo = ({ task, taskList, setTaskList }) => {
     }
     return (
         <>
-            <div className='flex flex-col items-start justify-start bg-slate-600 w-4/12 py-4 px-6 ml-6 my-4 rounded-lg'>
+            <div className='flex flex-col items-start justify-start bg-slate-600 py-4 px-6 ml-6 my-4 rounded-lg'>
                 <div className='w-full flex flex-row justify-between'>
                     <p className='text-2xl'>{task.projectName}</p>
                     <EditTask task={task} taskList={taskList} setTaskList={setTaskList} />
