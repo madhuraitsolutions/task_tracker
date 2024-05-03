@@ -13,8 +13,14 @@ export const EditTask = ({task, taskList, setTaskList}) => {
     const handleEditTask = (e) => {
         e.preventDefault()
         let taskIndex = taskList.indexOf(task)
-        taskList.splice(taskIndex, 1)
-        setTaskList([...taskList, { projectName, taskDescription }])
+        taskList.splice(taskIndex, 1, {
+            projectName : projectName, 
+            taskDescription : taskDescription,
+            timestamp: task.timestamp,
+            duration: task.duration
+        })
+        localStorage.setItem('taskList', JSON.stringify(taskList))
+        ///setTaskList([...taskList, { projectName, taskDescription }])
         setEditModel(false)
     }
 
@@ -56,7 +62,7 @@ export const EditTask = ({task, taskList, setTaskList}) => {
                                         id='project-name'
                                         name='projectName'
                                         type="text"
-                                        value={projectName || ''}
+                                        value={projectName}
                                         onChange={handleInputChange}
                                         placeholder='Project Name'
                                         required
@@ -70,7 +76,7 @@ export const EditTask = ({task, taskList, setTaskList}) => {
                                         id="task-description"
                                         rows="3"
                                         name="taskDescription"
-                                        value={taskDescription || ''}
+                                        value={taskDescription}
                                         onChange={handleInputChange}
                                         placeholder='Task Description'
                                         className='w-full rounded-lg border px-5 py-2'
