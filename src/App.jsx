@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './App.css'
 import AddTask from './components/AddTask'
 import Todo from './components/Todo'
 
 function App() {
   const [taskList, setTaskList] = React.useState([])
+  useEffect(() => {
+    let array = localStorage.getItem('taskList')
+    if (array) {
+      setTaskList(JSON.parse(array))
+    }
+  }, [])
 
   return (
     <>
