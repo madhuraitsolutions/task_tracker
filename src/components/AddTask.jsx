@@ -12,7 +12,8 @@ const AddTask = ({ taskList, setTaskList }) => {
             setErrorMessage('Project name cannot be empty')
         }
         else {
-            setTaskList([...taskList, { projectName, taskDescription }])
+            let timestamp = new Date().getTime()
+            setTaskList([...taskList, { projectName, taskDescription, timestamp:timestamp }])
             setAddModel(false)
             setProjectName('')
             setTaskDescription('')
