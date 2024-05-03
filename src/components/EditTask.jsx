@@ -20,6 +20,7 @@ export const EditTask = ({task, taskList, setTaskList}) => {
             duration: task.duration
         })
         localStorage.setItem('taskList', JSON.stringify(taskList))
+        window.location.reload()
         ///setTaskList([...taskList, { projectName, taskDescription }])
         setEditModel(false)
     }
