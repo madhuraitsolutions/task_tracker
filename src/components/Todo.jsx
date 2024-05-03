@@ -2,6 +2,12 @@ import React from 'react'
 import { EditTask } from './EditTask'
 
 const Todo = ({ task, taskList, setTaskList }) => {
+    const handleDelete = itemID => {
+        let removeIndex = taskList.indexOf(task)
+        taskList.splice(removeIndex, 1)
+        //setTaskList([...taskList])
+        setTaskList((currentTasks => currentTasks.filter((task) => task.id !== itemID)))
+    }
     return (
         <>
             <div className='flex flex-col items-start justify-start bg-slate-600 w-4/12 py-4 px-6 ml-6 my-4 rounded-lg'>
@@ -11,7 +17,12 @@ const Todo = ({ task, taskList, setTaskList }) => {
                 </div>
                 <p className='text-xl'>{task.taskDescription}</p>
                 <div className='w-full flex justify-center'>                    
-                    <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'>Delete</button>
+                    <button 
+                        className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'
+                        onClick={handleDelete}
+                    >
+                        Delete
+                    </button>
                 </div>
             </div>
         </>
