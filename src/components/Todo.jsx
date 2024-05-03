@@ -1,14 +1,21 @@
 import React, { useEffect } from 'react'
-import { EditTask } from './EditTask'
 import { useDrag } from 'react-dnd'
+import { EditTask } from './EditTask'
 
-const Todo = ({ task, taskList, setTaskList }) => {
+const Todo = ({ task, index, taskList, setTaskList }) => {
     const [time, setTime] = React.useState(task.duration)
     const [running, setRunning] = React.useState(false)
     const [{isDragging}, drag] = useDrag(() => ({
-        type: 'todo',
+        type: "todo",
+        item: {
+            id:index,
+            projectName: task.projectName,
+            taskDescription: task.taskDescription,
+            timestamp: task.timestamp,
+            duration: task.duration
+        },
         collect: (monitor) => ({
-            isDragging: !!monitor.isDragging(),
+            isDragging: !!monitor.isDragging()
         })
       }))
     useEffect(() => {
