@@ -10,7 +10,7 @@ function App() {
     if (array) {
       setTaskList(JSON.parse(array))
     }
-  }, [])
+  }, [taskList])
 
   return (
     <>
