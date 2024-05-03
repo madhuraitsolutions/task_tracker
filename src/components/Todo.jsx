@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { EditTask } from './EditTask'
 
 const Todo = ({ task, taskList, setTaskList }) => {
-    const [time, setTime] = React.useState(0)
+    const [time, setTime] = React.useState(task.duration)
     const [running, setRunning] = React.useState(false)
     useEffect(() => {
         let interval;
@@ -20,7 +20,32 @@ const Todo = ({ task, taskList, setTaskList }) => {
         let removeIndex = taskList.indexOf(task)
         taskList.splice(removeIndex, 1)
         //setTaskList([...taskList])
-        setTaskList((currentTasks => currentTasks.filter((task) => task.id !== itemID)))
+        //setTaskList((currentTasks => currentTasks.filter((task) => task.id !== itemID)))
+        localStorage.setItem('taskList', JSON.stringify(taskList))
+        window.location.reload()
+    }
+    const handleStopAction = () => {
+        setRunning(false)
+        let taskIndex = taskList.indexOf(task)
+        taskList.splice(taskIndex, 1, {
+            projectName: task.projectName,
+            taskDescription: task.taskDescription,
+            timestamp: task.timestamp,
+            duration: time
+        })
+        localStorage.setItem('taskList', JSON.stringify(taskList))
+        window.location.reload()
+    }
+    const handleResetAction = () => {
+        let taskIndex = taskList.indexOf(task)
+        taskList.splice(taskIndex, 1, {
+            projectName: task.projectName,
+            taskDescription: task.taskDescription,
+            timestamp: task.timestamp,
+            duration: 0
+        })
+        localStorage.setItem('taskList', JSON.stringify(taskList))
+        window.location.reload()
     }
     return (
         <>
@@ -41,7 +66,7 @@ const Todo = ({ task, taskList, setTaskList }) => {
                         {running ? (
                             <button
                                 className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
-                                onClick={() => setRunning(false)}
+                                onClick={handleStopAction}
                             >
                                 Stop
                             </button>
@@ -55,7 +80,7 @@ const Todo = ({ task, taskList, setTaskList }) => {
                         )}
                         <button 
                             className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
-                            onClick={() => setTime(0)}
+                            onClick={handleResetAction}
                         >
                             Reset
                         </button>
